@@ -25,29 +25,21 @@ from pathlib import Path
 
 share_dir_path = os.path.join(get_package_share_directory('miniv_description'))
 xacro_path = os.path.join(share_dir_path, 'urdf', 'miniv.urdf.xacro')
-urdf_path = os.path.join(share_dir_path, 'urdf', 'miniv.urdf')
 
 
 def generate_launch_description():
     doc = xacro.process_file(xacro_path)
-    robot_desc = doc.toprettyxml(indent='  ')
-    f = open(urdf_path, 'w')
-    f.write(robot_desc)
-    f.close()
-    rsp = Node(
+    robot_description = {"robot_description": doc.toxml()}
+    robot_state_publisher = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
         output='both',
-        arguments=[urdf_path])
+        parameters=[robot_description])
     with_rviz = LaunchConfiguration('with_rviz', default=False)
-
-    return launch.LaunchDescription(
-        [
-            rsp,
-            DeclareLaunchArgument(
+    with_rviz_arg = DeclareLaunchArgument(
                 'with_rviz', default_value=with_rviz,
-                description="if true, launch Autoware with given rviz configuration."),
-            Node(
+                description="if true, launch Autoware with given rviz configuration.")
+    rviz = Node(
                 package='rviz2',
                 executable='rviz2',
                 name='rviz2',
@@ -59,8 +51,12 @@ def generate_launch_description():
                 arguments=[
                     '-d', str(
                         Path(get_package_share_directory('miniv_description')) /
-                        'miniv.rviz')
-                    ],
-                )
+                        'miniv.rviz')])
+
+    return launch.LaunchDescription(
+        [
+            robot_state_publisher,
+            with_rviz_arg,
+            rviz
         ]
     )

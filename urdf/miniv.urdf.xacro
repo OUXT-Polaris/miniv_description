@@ -1,14 +1,19 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://ros.org/wiki/xacro" name="mini-v">
+<robot
+    name="mini-v"
+    xmlns:xacro="http://ros.org/wiki/xacro" 
+    xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+    xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+    xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">>
   <link name="base_link">
     <visual>
-      <origin xyz="0 -0.4 0" rpy="1.570795 0 1.570795"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://miniv_description/model/A_MINI_POLARIS_main.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://miniv_description/model/A_MINI_POLARIS_main_r1.stl" scale="1 1 1"/>
       </geometry>
     </visual>
   </link>
   <xacro:include filename="$(find miniv_description)/urdf/azimuth_thruster.xacro"/>
-  <xacro:azimuth_thruster prefix="right" position="-1.0 -0.25 -0.1" orientation="0 0 0"/>
-  <xacro:azimuth_thruster prefix="left" position="-1.0 0.25 -0.1" orientation="0 0 0"/>
+  <xacro:azimuth_thruster prefix="right" position="-0.51 -0.17 -0.17" orientation="0 0 0"/>
+  <xacro:azimuth_thruster prefix="left" position="-0.51 0.17 -0.17" orientation="0 0 0"/>
 </robot>
