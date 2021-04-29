@@ -11,6 +11,7 @@
 
   <depend>xacro</depend>
   <depend>robot_state_publisher</depend>
+  <depend>miniv_control</depend>
   <exec_depend>rviz2</exec_depend>
 
   <test_depend>ament_lint_auto</test_depend>

@@ -35,9 +35,9 @@ def generate_launch_description():
         executable='robot_state_publisher',
         output='both',
         parameters=[robot_description])
-    with_rviz = LaunchConfiguration('with_rviz', default=False)
-    with_rviz_arg = DeclareLaunchArgument(
-                'with_rviz', default_value=with_rviz,
+    view_model = LaunchConfiguration('view_model', default=False)
+    view_model_arg = DeclareLaunchArgument(
+                'view_model', default_value=view_model,
                 description="if true, launch Autoware with given rviz configuration.")
     rviz = Node(
                 package='rviz2',
@@ -47,7 +47,7 @@ def generate_launch_description():
                     'stderr': 'log',
                     'stdout': 'log',
                     },
-                condition=IfCondition(with_rviz),
+                condition=IfCondition(view_model),
                 arguments=[
                     '-d', str(
                         Path(get_package_share_directory('miniv_description')) /
@@ -56,7 +56,7 @@ def generate_launch_description():
     return launch.LaunchDescription(
         [
             robot_state_publisher,
-            with_rviz_arg,
+            view_model_arg,
             rviz
         ]
     )
