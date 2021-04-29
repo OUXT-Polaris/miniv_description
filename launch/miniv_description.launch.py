@@ -18,9 +18,9 @@ import launch
 import launch_ros.actions
 import xacro
 
-share_dir_path = os.path.join(get_package_share_directory('wamv_description'))
-xacro_path = os.path.join(share_dir_path, 'urdf', 'wamv.urdf.xacro')
-urdf_path = os.path.join(share_dir_path, 'urdf', 'wamv.urdf')
+share_dir_path = os.path.join(get_package_share_directory('miniv_description'))
+xacro_path = os.path.join(share_dir_path, 'urdf', 'miniv.urdf.xacro')
+urdf_path = os.path.join(share_dir_path, 'urdf', 'miniv.urdf')
 
 
 def generate_launch_description():

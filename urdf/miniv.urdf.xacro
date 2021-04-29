@@ -1,3 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="mini-v">
+  <link name="base_link"/>
+  <xacro:include filename="$(find miniv_description)/urdf/azimuth_thruster.xacro"/>
+  <xacro:azimuth_thruster prefix="right" position="-1.0 -0.25 -0.1" orientation="0 0 0"/>
+  <xacro:azimuth_thruster prefix="left" position="-1.0 0.25 -0.1" orientation="0 0 0"/>
 </robot>

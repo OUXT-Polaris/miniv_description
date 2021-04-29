@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="wam-v-batteries">
+  <xacro:macro name="azimuth_thruster" params="prefix position:='0 0 0' orientation:='0 0 0'">
+  <link name="${prefix}_azimuth_link">
+  </link>
+  <joint name ="${prefix}_azimuth_link" type="fixed">
+    <origin xyz="${position}" rpy="${orientation}"/>
+    <parent link="base_link"/>
+    <child link="${prefix}_azimuth_link"/>
+  </joint>
+  </xacro:macro>
+</robot>
