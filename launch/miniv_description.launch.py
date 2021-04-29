@@ -34,10 +34,11 @@ def generate_launch_description():
     f = open(urdf_path, 'w')
     f.write(robot_desc)
     f.close()
-    rsp = Node(package='robot_state_publisher',
-                                  executable='robot_state_publisher',
-                                  output='both',
-                                  arguments=[urdf_path])
+    rsp = Node(
+        package='robot_state_publisher',
+        executable='robot_state_publisher',
+        output='both',
+        arguments=[urdf_path])
     with_rviz = LaunchConfiguration('with_rviz', default=False)
 
     return launch.LaunchDescription(
