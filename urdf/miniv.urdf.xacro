@@ -13,6 +13,13 @@
       </geometry>
     </visual>
   </link>
+
+  <ros2_control name="miniv_control" type="system">
+    <hardware>
+      <plugin>miniv_control/MiniVHardware</plugin>
+    </hardware>
+  </ros2_control>
+
   <xacro:include filename="$(find miniv_description)/urdf/azimuth_thruster.xacro"/>
   <xacro:azimuth_thruster prefix="right" position="-0.51 -0.17 -0.17" orientation="0 0 0"/>
   <xacro:azimuth_thruster prefix="left" position="-0.51 0.17 -0.17" orientation="0 0 0"/>

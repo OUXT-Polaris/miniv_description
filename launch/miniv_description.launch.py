@@ -52,11 +52,24 @@ def generate_launch_description():
                     '-d', str(
                         Path(get_package_share_directory('miniv_description')) /
                         'miniv.rviz')])
+    controller_config = os.path.join(
+        get_package_share_directory("miniv_control"), "config", "miniv_control.yaml"
+    )
+    control_node = Node(
+        package="controller_manager",
+        executable="ros2_control_node",
+        parameters=[robot_description, controller_config],
+        output={
+            "stdout": "screen",
+            "stderr": "screen",
+        },
+    )
 
     return launch.LaunchDescription(
         [
             robot_state_publisher,
             view_model_arg,
-            rviz
+            rviz,
+            control_node
         ]
     )
