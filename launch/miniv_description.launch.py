@@ -15,8 +15,13 @@
 import os
 from ament_index_python.packages import get_package_share_directory
 import launch
-import launch_ros.actions
+from launch.actions import DeclareLaunchArgument
+from launch.conditions import IfCondition
+from launch.substitutions import LaunchConfiguration
+from launch_ros.actions import Node
 import xacro
+
+from pathlib import Path
 
 share_dir_path = os.path.join(get_package_share_directory('miniv_description'))
 xacro_path = os.path.join(share_dir_path, 'urdf', 'miniv.urdf.xacro')
@@ -29,9 +34,32 @@ def generate_launch_description():
     f = open(urdf_path, 'w')
     f.write(robot_desc)
     f.close()
-    rsp = launch_ros.actions.Node(package='robot_state_publisher',
+    rsp = Node(package='robot_state_publisher',
                                   executable='robot_state_publisher',
                                   output='both',
                                   arguments=[urdf_path])
+    with_rviz = LaunchConfiguration('with_rviz', default=False)
 
-    return launch.LaunchDescription([rsp])
+    return launch.LaunchDescription(
+        [
+            rsp,
+            DeclareLaunchArgument(
+                'with_rviz', default_value=with_rviz,
+                description="if true, launch Autoware with given rviz configuration."),
+            Node(
+                package='rviz2',
+                executable='rviz2',
+                name='rviz2',
+                output={
+                    'stderr': 'log',
+                    'stdout': 'log',
+                    },
+                condition=IfCondition(with_rviz),
+                arguments=[
+                    '-d', str(
+                        Path(get_package_share_directory('miniv_description')) /
+                        'miniv.rviz')
+                    ],
+                )
+        ]
+    )
