@@ -17,7 +17,7 @@
   <ros2_control name="miniv_control" type="system">
     <hardware>
       <plugin>miniv_control/MiniVHardware</plugin>
-      <param name="thruster_ip_address">192.168.0.1</param>
+      <param name="thruster_ip_address">192.168.0.25</param>
       <param name="port">8000</param>
       <param name="timeout_seconds">10.0</param>
     </hardware>
