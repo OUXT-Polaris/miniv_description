@@ -28,15 +28,16 @@
     </ros2_control>
   </xacro:macro>
 
-  <xacro:macro name="main_thruster_control" params="left_joint right_joint">
+  <xacro:macro name="main_thruster_control" params="ip_address port">
     <ros2_control name="main_thruster_control" type="system">
+<!-- 
       <hardware>
         <plugin>miniv_control/MiniVHardware</plugin>
-        <param name="thruster_ip_address">${thruster_ip_address}</param>
-        <param name="port">${thruster_port}</param>
+        <param name="ip_address">${ip_address}</param>
+        <param name="port">${port}</param>
         <param name="timeout_seconds">10.0</param>
-        <param name="enable_azimuth">${control_azimuth}</param>
       </hardware>
+-->
     </ros2_control>
   </xacro:macro>
 </robot>
