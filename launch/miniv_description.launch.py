@@ -15,7 +15,7 @@
 import os
 from ament_index_python.packages import get_package_share_directory
 import launch
-from launch.actions import DeclareLaunchArgument
+from launch.actions import DeclareLaunchArgument, ExecuteProcess
 from launch.conditions import IfCondition
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
@@ -53,7 +53,7 @@ def generate_launch_description():
                         Path(get_package_share_directory('miniv_description')) /
                         'miniv.rviz')])
     controller_config = os.path.join(
-        get_package_share_directory("miniv_control"), "config", "miniv_control.yaml"
+        get_package_share_directory("miniv_description"), "config", "controllers.yaml"
     )
     control_node = Node(
         package="controller_manager",
@@ -70,6 +70,33 @@ def generate_launch_description():
             robot_state_publisher,
             view_model_arg,
             rviz,
-            control_node
+            control_node,
+            ExecuteProcess(
+                cmd=[
+                    "ros2",
+                    "control",
+                    "load_start_controller",
+                    "joint_state_controller"],
+                output="screen",
+                shell=True,
+            ),
+            ExecuteProcess(
+                cmd=[
+                    "ros2",
+                    "control",
+                    "load_configure_controller",
+                    "velocity_controller"],
+                output="screen",
+                shell=True,
+            ),
+            ExecuteProcess(
+                cmd=[
+                    "ros2",
+                    "control",
+                    "load_configure_controller",
+                    "joint_trajectory_controller"],
+                output="screen",
+                shell=True,
+            )
         ]
     )

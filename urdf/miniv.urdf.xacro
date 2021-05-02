@@ -4,7 +4,7 @@
     xmlns:xacro="http://ros.org/wiki/xacro" 
     xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
     xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
-    xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">>
+    xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
   <link name="base_link">
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -14,16 +14,6 @@
     </visual>
   </link>
 
-  <ros2_control name="miniv_control" type="system">
-    <hardware>
-      <plugin>miniv_control/MiniVHardware</plugin>
-      <param name="thruster_ip_address">192.168.0.25</param>
-      <param name="port">8000</param>
-      <param name="timeout_seconds">10.0</param>
-    </hardware>
-  </ros2_control>
-
-  <xacro:include filename="$(find miniv_description)/urdf/azimuth_thruster.xacro"/>
-  <xacro:azimuth_thruster prefix="right" position="-0.51 -0.17 -0.17" orientation="0 0 0"/>
-  <xacro:azimuth_thruster prefix="left" position="-0.51 0.17 -0.17" orientation="0 0 0"/>
+  <xacro:include filename="$(find miniv_description)/urdf/thruster.xacro"/>
+  <xacro:thruster control_azimuth="true"/>
 </robot>
