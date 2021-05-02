@@ -84,7 +84,7 @@ def generate_launch_description():
                 cmd=[
                     "ros2",
                     "control",
-                    "load_configure_controller",
+                    "load_start_controller",
                     "velocity_controller"],
                 output="screen",
                 shell=True,
@@ -93,8 +93,8 @@ def generate_launch_description():
                 cmd=[
                     "ros2",
                     "control",
-                    "load_configure_controller",
-                    "joint_trajectory_controller"],
+                    "load_start_controller",
+                    "forward_command_controller"],
                 output="screen",
                 shell=True,
             )

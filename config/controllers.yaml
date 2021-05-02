@@ -5,8 +5,8 @@ controller_manager:
     velocity_controller:
       type: velocity_controllers/JointGroupVelocityController
 
-    joint_trajectory_controller:
-      type: joint_trajectory_controller/JointTrajectoryController
+    forward_command_controller:
+      type: forward_command_controller/ForwardCommandController
 
     joint_state_controller:
       type: joint_state_controller/JointStateController
@@ -17,8 +17,9 @@ velocity_controller:
       - left_thruster_joint
       - right_thruster_joint
 
-joint_trajectory_controller:
+forward_command_controller:
   ros__parameters:
     joints:
       - left_azimuth_joint
       - right_azimuth_joint
+    interface_name: position
