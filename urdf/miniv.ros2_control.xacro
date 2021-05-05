@@ -4,8 +4,8 @@
       <hardware>
         <plugin>dynamixel_hardware_interface/DynamixelHardwareInterface</plugin>
         <param name="port_name">/dev/ttyUSB0</param>
-        <param name="baudrate">1000000</param>
-        <param name="enable_dummy">true</param>
+        <param name="baudrate">57600</param>
+        <param name="enable_dummy">false</param>
       </hardware>
       <joint name="${left_joint}">
         <param name="id">1</param>
