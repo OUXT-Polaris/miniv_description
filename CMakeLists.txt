@@ -23,7 +23,7 @@ find_package(robot_state_publisher REQUIRED)
 install(DIRECTORY urdf/
   DESTINATION share/${PROJECT_NAME}/urdf)
 
-install(DIRECTORY launch model
+install(DIRECTORY launch model config
   DESTINATION share/${PROJECT_NAME}
 )
 
