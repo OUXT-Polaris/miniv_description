@@ -59,9 +59,10 @@ def generate_launch_description():
                     },
                 condition=IfCondition(view_model),
                 arguments=[
-                    '-d', str(
-                        Path(get_package_share_directory('miniv_description')) /
-                        'miniv.rviz')])
+                    '-d', os.path.join(
+                        get_package_share_directory("miniv_description"),
+                        "config",
+                        "miniv.rviz")])
     controller_config = os.path.join(
         get_package_share_directory("miniv_description"), "config", "controllers.yaml"
     )
