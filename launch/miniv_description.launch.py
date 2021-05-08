@@ -45,6 +45,10 @@ def generate_launch_description():
     view_model_arg = DeclareLaunchArgument(
                 'view_model', default_value=view_model,
                 description="if true, launch with given rviz configuration.")
+    with_joy = LaunchConfiguration('with_joy', default=False)
+    with_joy_arg = DeclareLaunchArgument(
+                'with_joy', default_value=with_joy,
+                description="if true, launch with given rviz configuration.")
     rviz = Node(
                 package='rviz2',
                 executable='rviz2',
@@ -93,6 +97,18 @@ def generate_launch_description():
         },
         condition=IfCondition(enable_dummy)
     )
+    joy_param_file = LaunchConfiguration(
+        'joy_param_file',
+        default=os.path.join(
+            get_package_share_directory('miniv_description'),
+            'config', 'joy.yaml'))
+    joy_node = Node(
+            package='joy',
+            executable='joy_node',
+            name='joy_node',
+            parameters=[joy_param_file],
+            condition=IfCondition(with_joy),
+            output='screen')
 
     return launch.LaunchDescription(
         [
@@ -103,6 +119,7 @@ def generate_launch_description():
             rviz,
             control_node,
             control_node_dummy,
+            joy_node,
             ExecuteProcess(
                 cmd=[
                     "ros2",
