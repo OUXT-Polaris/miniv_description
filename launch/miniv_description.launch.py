@@ -117,16 +117,7 @@ def generate_launch_description():
                     "ros2",
                     "control",
                     "load_start_controller",
-                    "velocity_controller"],
-                output="screen",
-                shell=True,
-            ),
-            ExecuteProcess(
-                cmd=[
-                    "ros2",
-                    "control",
-                    "load_start_controller",
-                    "forward_command_controller"],
+                    "usv_joy_controller"],
                 output="screen",
                 shell=True,
             )
