@@ -21,8 +21,6 @@ from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 import xacro
 
-from pathlib import Path
-
 
 def generate_robot_description(enable_dummy):
     share_dir_path = os.path.join(get_package_share_directory('miniv_description'))
@@ -117,6 +115,7 @@ def generate_launch_description():
             robot_state_publisher_dummy,
             view_model_arg,
             enable_dummy_arg,
+            with_joy_arg,
             rviz,
             control_node,
             control_node_dummy,
