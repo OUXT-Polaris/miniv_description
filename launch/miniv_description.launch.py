@@ -15,9 +15,10 @@
 import os
 from ament_index_python.packages import get_package_share_directory
 import launch
-from launch.actions import DeclareLaunchArgument, ExecuteProcess
+from launch.actions import DeclareLaunchArgument, ExecuteProcess, IncludeLaunchDescription
 from launch.conditions import IfCondition, UnlessCondition
 from launch.substitutions import LaunchConfiguration
+from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
 import xacro
 
@@ -119,6 +120,12 @@ def generate_launch_description():
                     "usv_joy_controller"],
                 output="screen",
                 shell=True,
+            ),
+            IncludeLaunchDescription(
+                PythonLaunchDescriptionSource(
+                    [os.path.join(
+                        get_package_share_directory('realsense_hardware_interface'),
+                        'launch'), 't265_example'])
             )
         ]
     )
