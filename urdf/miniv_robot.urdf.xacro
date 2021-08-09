@@ -19,7 +19,7 @@
   </link>
 
   <joint name ="t265_joint" type="fixed">
-    <origin xyz="0.4 0 0" rpy="0 0 0"/>
+    <origin xyz="0.3 0 0.15" rpy="0 0 0"/>
     <parent link="base_link"/>
     <child link="t265_link"/>
   </joint>
