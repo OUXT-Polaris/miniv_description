@@ -10,6 +10,8 @@ controller_manager:
       type: realsense_hardware_interface/Rs2PosePublisher
     rs2_imu_publisher:
       type: realsense_hardware_interface/Rs2ImuPublisher
+    dinamixel_diagnostic_controller:
+      type: dynamixel_hardware_interface/DynamixelDiagnosticController
 
 usv_joy_controller:
   ros__parameters:
@@ -31,3 +33,13 @@ rs2_imu_publisher:
     imu_frame: t265_link
     imu_topic : /imu
     joint: t265_link
+
+dinamixel_diagnostic_controller:
+  ros__parameters:
+    joints:
+      - left_azimuth_joint
+      - right_azimuth_joint
+    left_azimuth_joint:
+      - temperature
+    right_azimuth_joint:
+      - temperature
