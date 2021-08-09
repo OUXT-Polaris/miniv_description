@@ -121,11 +121,23 @@ def generate_launch_description():
                 output="screen",
                 shell=True,
             ),
-            IncludeLaunchDescription(
-                PythonLaunchDescriptionSource(
-                    [os.path.join(
-                        get_package_share_directory('realsense_hardware_interface'),
-                        'launch'), '/t265_example.launch.py'])
+            ExecuteProcess(
+                cmd=[
+                    "ros2",
+                    "control",
+                    "load_start_controller",
+                    "rs2_pose_publisher"],
+                output="screen",
+                shell=True,
+            ),
+            ExecuteProcess(
+                cmd=[
+                    "ros2",
+                    "control",
+                    "load_start_controller",
+                    "rs2_imu_publisher"],
+                output="screen",
+                shell=True,
             )
         ]
     )
