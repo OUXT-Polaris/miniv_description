@@ -32,6 +32,8 @@
       <param name="right_image_key">t265_right_fisheye</param>
       <param name="serial">109422110714</param>
     </hardware>
+    <joint name="t265_link">
+    </joint>
   </ros2_control>
 
   <xacro:include filename="$(find miniv_description)/urdf/thruster.xacro"/>
