@@ -6,6 +6,10 @@ controller_manager:
       type: joint_state_controller/JointStateController
     usv_joy_controller:
       type: usv_controller/UsvJoyController
+    rs2_pose_publisher:
+      type: realsense_hardware_interface/Rs2PosePublisher
+    rs2_imu_publisher:
+      type: realsense_hardware_interface/Rs2ImuPublisher
 
 usv_joy_controller:
   ros__parameters:
@@ -14,3 +18,16 @@ usv_joy_controller:
     left_azimuth_joint: left_azimuth_joint
     right_azimuth_joint: right_azimuth_joint
     joy_topic : /joy
+
+rs2_pose_publisher:
+  ros__parameters:
+    odom_frame: odom
+    odom_topic : /odom
+    joint: t265_link
+    publish_tf: True
+
+rs2_imu_publisher:
+  ros__parameters:
+    imu_frame: t265_link
+    imu_topic : /imu
+    joint: t265_link

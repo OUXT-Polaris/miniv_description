@@ -119,6 +119,24 @@ def generate_launch_description():
                     "usv_joy_controller"],
                 output="screen",
                 shell=True,
+            ),
+            ExecuteProcess(
+                cmd=[
+                    "ros2",
+                    "control",
+                    "load_start_controller",
+                    "rs2_pose_publisher"],
+                output="screen",
+                shell=True,
+            ),
+            ExecuteProcess(
+                cmd=[
+                    "ros2",
+                    "control",
+                    "load_start_controller",
+                    "rs2_imu_publisher"],
+                output="screen",
+                shell=True,
             )
         ]
     )
