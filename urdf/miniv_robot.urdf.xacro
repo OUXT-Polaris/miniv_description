@@ -15,6 +15,15 @@
     </visual>
   </link>
 
+  <link name="t265_link">
+  </link>
+
+  <joint name ="t265_joint" type="fixed">
+    <origin xyz="0.4 0 0" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="t265_link"/>
+  </joint>
+
   <xacro:include filename="$(find miniv_description)/urdf/thruster.xacro"/>
   <xacro:thruster enable_dummy="false"/>
 </robot>
