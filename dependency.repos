@@ -7,7 +7,11 @@ repositories:
     type: git
     url: https://github.com/OUXT-Polaris/tcp_sender.git
     version: master
-  tcp_sender:
+  realsense_hardware_interface:
     type: git
-    url: https://github.com/OUXT-Polaris/tcp_sender.git
+    url: https://github.com/OUXT-Polaris/realsense_hardware_interface.git
     version: master
+  quaternion_operation:
+    url: https://github.com/OUXT-Polaris/quaternion_operation.git
+    type: git
+    version: ros2

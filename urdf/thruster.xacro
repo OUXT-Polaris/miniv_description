@@ -5,7 +5,7 @@
   xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
   xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
-  <xacro:macro name="thruster" params="enable_dummy thruster_ip_address='192.168.0.25' thruster_port=12345">
+  <xacro:macro name="thruster" params="enable_dummy thruster_ip_address='192.168.10.100' thruster_port=12345">
     <xacro:include filename="$(find miniv_description)/urdf/azimuth_thruster.xacro"/>
     <xacro:azimuth_thruster prefix="right" position="-0.51 -0.17 -0.17" orientation="0 0 0"/>
     <xacro:azimuth_thruster prefix="left" position="-0.51 0.17 -0.17" orientation="0 0 0"/>
