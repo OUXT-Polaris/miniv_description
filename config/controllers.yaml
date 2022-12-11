@@ -6,10 +6,10 @@ controller_manager:
       type: joint_state_controller/JointStateController
     usv_joy_controller:
       type: usv_controller/UsvJoyController
-    rs2_pose_publisher:
-      type: realsense_hardware_interface/Rs2PosePublisher
-    rs2_imu_publisher:
-      type: realsense_hardware_interface/Rs2ImuPublisher
+    # rs2_pose_publisher:
+    #   type: realsense_hardware_interface/Rs2PosePublisher
+    # rs2_imu_publisher:
+    #   type: realsense_hardware_interface/Rs2ImuPublisher
     dinamixel_diagnostic_controller:
       type: dynamixel_hardware_interface/DynamixelDiagnosticController
 

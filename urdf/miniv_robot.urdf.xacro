@@ -24,7 +24,7 @@
     <child link="t265_link"/>
   </joint>
 
-  <ros2_control name="t265_control" type="sensor">
+  <!-- <ros2_control name="t265_control" type="sensor">
     <hardware>
       <plugin>realsense_hardware_interface/T265HardwareInterface</plugin>
       <param name="retrive_image">false</param>
@@ -34,7 +34,7 @@
     </hardware>
     <joint name="t265_link">
     </joint>
-  </ros2_control>
+  </ros2_control> -->
 
   <xacro:include filename="$(find miniv_description)/urdf/thruster.xacro"/>
   <xacro:thruster enable_dummy="false"/>
